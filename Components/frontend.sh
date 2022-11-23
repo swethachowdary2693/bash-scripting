@@ -1,10 +1,7 @@
 #!/bin/bash
 
-ID=$(id -u)
+source Components/common.sh
 
-if [ $ID -ne 0 ]; then
-    echo "Execute as root user to proceed further"
-    exit 1
-fi
+usercheck()
 
 yum install nginx -y
