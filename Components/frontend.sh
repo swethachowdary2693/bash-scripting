@@ -2,8 +2,9 @@
 
 ID=$(id -u)
 
-if [ $ID -eq 0 ]; then
-    echo "hey my id" : $ID
-else
-    echo "hey execute as root user"
+if [ $ID -ne 0 ]; then
+    echo "Creating frontend"
+    exit 1
 fi
+
+yum install nginx -y
