@@ -22,10 +22,10 @@ Status $?
 
 cd /usr/share/nginx/html
 rm -rf *
-unzip -o /tmp/frontend.zip
+unzip -o /tmp/frontend.zip  >> /tmp/frontend 
 mv frontend-main/* .
 mv static/* .
 rm -rf frontend-main README.md
 mv localhost.conf /etc/nginx/default.d/roboshop.conf
 
-echo -n "Completed"
+echo -n "\e[32m Completed \e[0m"
