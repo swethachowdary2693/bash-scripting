@@ -28,4 +28,4 @@ mv static/* .
 rm -rf frontend-main README.md
 mv localhost.conf /etc/nginx/default.d/roboshop.conf
 
-echo -n "\e[32m Completed \e[0m"
+echo -e "\e[32m Completed \e[0m"
