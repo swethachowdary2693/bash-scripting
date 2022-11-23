@@ -12,3 +12,15 @@ Status() {
         echo -e "\e[32m Failed in installing \e[0m"
     fi
 }
+
+Sysctl() {
+
+echo -n "Enable $1 : "
+systemctl enable $1  >> /tmp/frontend
+Status $2
+
+echo -n "Start $1 : "
+systemctl start $1 >> /tmp/frontend
+Status $2
+
+}
