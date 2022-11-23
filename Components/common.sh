@@ -16,11 +16,11 @@ Status() {
 Sysctl() {
 
 echo -n "Enable $1 : "
-systemctl enable $1  >> /tmp/frontend
+systemctl enable $1  >> /tmp/$3
 Status $2
 
 echo -n "Start $1 : "
-systemctl start $1 >> /tmp/frontend
+systemctl start $1 >> /tmp/$3
 Status $2
 
 }
