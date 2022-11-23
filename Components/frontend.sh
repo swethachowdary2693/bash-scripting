@@ -2,4 +2,4 @@
 
 ID=$(id -u)
 
-echo "hey my ID" : $ID 
+echo -e "hey my ID" : $ID 
