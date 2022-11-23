@@ -1,4 +1,3 @@
-usercheck() {
     ID=$(id -u)
 
 if [ $ID -ne 0 ]; then
@@ -6,4 +5,3 @@ if [ $ID -ne 0 ]; then
     exit 1
 fi
 
-}
