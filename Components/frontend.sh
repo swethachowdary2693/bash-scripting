@@ -1,3 +1,5 @@
 #!/bin/bash
 
-echo "Hi, This is a test message"
+ID = $(id -u)
+
+echo "hey my ID" : $ID 
