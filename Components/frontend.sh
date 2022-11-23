@@ -28,4 +28,4 @@ mv static/* .
 rm -rf frontend-main README.md
 mv localhost.conf /etc/nginx/default.d/roboshop.conf
 
-echo -e "\e[32m Completed \e[0m"
+echo -e "Completed the installation : \e[32m Success \e[0m"
