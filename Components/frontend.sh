@@ -4,17 +4,19 @@ set -e
 
 source Components/common.sh
 
+Component=nginx
+
 echo -n "Intalling Nginx : "
-yum install nginx -y >> /tmp/frontend
+yum install $Component -y >> /tmp/frontend
 Status $?
 
-Sysctl nginx $? frontend
+Sysctl $Component $? frontend
 
 echo -n "Download the content : "
 curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip" 
 Status $?
 
-cd /usr/share/nginx/html
+cd /usr/share/$Component/html
 rm -rf *
 
 echo -n "Unzip the folder : "
@@ -29,11 +31,11 @@ rm -rf frontend-main README.md
 Status $?
 
 echo -n "Creating reverse proxy file : "
-mv localhost.conf /etc/nginx/default.d/roboshop.conf
+mv localhost.conf /etc/$Component/default.d/roboshop.conf
 Status $?
 
 echo -n "Restarting the Nginx"
-systemctl restart nginx
+systemctl restart $Component
 Status $?
 
 echo -e "Creation of Frontend : \e[32m Success \e[0m"
