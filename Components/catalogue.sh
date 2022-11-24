@@ -20,7 +20,7 @@ echo -n "Download the catalogue :"
 curl -s -L -o /tmp/$Component.zip "https://github.com/stans-robot-project/$Component/archive/main.zip" >> /tmp/$Component
 cd /home/$Fuser && unzip -o /tmp/$Component.zip >> /tmp/$Component && mv $Component-main $Component
 
-chown -R $Fuser:$Fuser $Component
+chown -R $Fuser:$Fuser $Component/
 cd /home/$Fuser/$Component
 npm install >> /tmp/$Component
 
