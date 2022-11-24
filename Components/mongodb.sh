@@ -32,8 +32,8 @@ echo -n "Injecting the Schema : "
 cd /tmp
 unzip -o mongodb.zip >> /tmp/$Component
 cd mongodb-main
-mongo < catalogue.js
-mongo < users.js
+mongo < catalogue.js >> /tmp/$Component
+mongo < users.js    >>  /tmp/$Component
 Status $?
 
 echo -e "Created Mongodb : \e[32m Success \e[0m"
