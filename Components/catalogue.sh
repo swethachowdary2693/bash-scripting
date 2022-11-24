@@ -31,7 +31,7 @@ cd /home/$Fuser/$Component
 npm install >> /tmp/$Component
 
 echo -n "Setting up systemd service : "
-sed -i -e 's/MONGO_DNSNAME/172.31.24.78/' home/$Fuser/$Component/systemd.service >> /tmp/$Component && mv /home/$Fuser/$Component/systemd.service /etc/systemd/system/$Component.service
+sed -i -e 's/MONGO_DNSNAME/172.31.24.78/' /home/$Fuser/$Component/systemd.service >> /tmp/$Component && mv /home/$Fuser/$Component/systemd.service /etc/systemd/system/$Component.service
 Status $?
 
 echo -n "Restarting the service : "
