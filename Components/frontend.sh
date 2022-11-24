@@ -16,10 +16,24 @@ Status $?
 
 cd /usr/share/nginx/html
 rm -rf *
-unzip -o /tmp/frontend.zip  >> /tmp/frontend 
+
+echo -n "Unzip the folder : "
+unzip -o /tmp/frontend.zip  >> /tmp/frontend
+Status $?
+
 mv frontend-main/* .
 mv static/* .
-rm -rf frontend-main README.md
-mv localhost.conf /etc/nginx/default.d/roboshop.conf
 
-echo -e "Completed the installation : \e[32m Success \e[0m"
+echo -n "Performing cleanup : "
+rm -rf frontend-main README.md
+Status $?
+
+echo -n "Creating reverse proxy file : "
+mv localhost.conf /etc/nginx/default.d/roboshop.conf
+Status $?
+
+echo -n "Restarting the Nginx"
+systemctl restart nginx
+Status $?
+
+echo -e "Creation of Frontend : \e[32m Success \e[0m"
