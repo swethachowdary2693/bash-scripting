@@ -29,9 +29,8 @@ curl -s -L -o /tmp/mongodb.zip "https://github.com/stans-robot-project/mongodb/a
 Status $?
 
 echo -n "Injecting the Schema : "
-cd /tmp
-unzip -o mongodb.zip >> /tmp/$Component
-cd mongodb-main
+cd /tmp && unzip -o mongodb.zip >> /tmp/$Component && cd mongodb-main
+
 mongo < catalogue.js >> /tmp/$Component
 mongo < users.js    >>  /tmp/$Component
 Status $?
