@@ -42,7 +42,7 @@ echo -e "Creation of Frontend : \e[32m Success \e[0m"
 
 echo -n "Updating proxy file with catalogue: "
 for comp in catalogue ; do 
-    sed -i -e "/$comp/s/localhost/172.31.17.151/" /etc/nginx/default.d/roboshop.conf  >> /tmp/frontend
+    sed -i -e "/$comp/s/localhost/172.31.17.159/" /etc/nginx/default.d/roboshop.conf  >> /tmp/frontend
     Status $?
 done
 
