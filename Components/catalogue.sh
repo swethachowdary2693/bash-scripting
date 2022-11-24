@@ -5,7 +5,7 @@ set -e
 source Components/common.sh
 
 Component=catalogue
-Fuser = roboshop
+Fuser=roboshop
 
 echo -n "Installing NodeJs : "
 curl --silent --location https://rpm.nodesource.com/setup_16.x | sudo bash - >> /tmp/$Component
