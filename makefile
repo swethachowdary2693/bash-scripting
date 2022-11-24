@@ -5,4 +5,4 @@ mongodb:
 	bash Components/mongodb.sh
 
 catalogue:
-	bash Component/catalogue.sh
+	bash Components/catalogue.sh
