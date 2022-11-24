@@ -30,7 +30,7 @@ Status $?
 
 echo -n "Injecting the Schema : "
 cd /tmp
-unzip mongodb.zip
+unzip -o mongodb.zip >> /tmp/$Component
 cd mongodb-main
 mongo < catalogue.js
 mongo < users.js
