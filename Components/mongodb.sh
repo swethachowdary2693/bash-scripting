@@ -2,7 +2,7 @@
 
 set -e
 
-source Component/common.sh
+source Components/common.sh
 
 Component=mongodb
 
