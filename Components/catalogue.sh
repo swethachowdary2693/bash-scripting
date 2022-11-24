@@ -19,9 +19,14 @@ Status $?
 echo -n "Download the catalogue :"
 curl -s -L -o /tmp/$Component.zip "https://github.com/stans-robot-project/$Component/archive/main.zip" >> /tmp/$Component
 rm -rf /home/$Fuser/$Component >> /tmp/$Component
-cd /home/$Fuser && unzip -o /tmp/$Component.zip >> /tmp/$Component && mv $Component-main $Component
+cd /home/$Fuser 
+unzip -o /tmp/$Component.zip >> /tmp/$Component && mv $Component-main $Component
+Status $?
 
-chown -R $Fuser:$Fuser $Component/
+echo -n "Changing ownership : "
+chown -R $Fuser:$Fuser $Component/  >> /tmp/$Component
+Status $?
+
 cd /home/$Fuser/$Component
 npm install >> /tmp/$Component
 
