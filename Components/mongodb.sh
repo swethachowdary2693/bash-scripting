@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sed -e
+set -e
 
 source Component/common.sh
 
