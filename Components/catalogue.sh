@@ -30,3 +30,12 @@ Status $?
 cd /home/$Fuser/$Component
 npm install >> /tmp/$Component
 
+echo -n "Setting up systemd service : "
+sed -i -e 's/MONGO_DNSNAME/172.31.24.78/' >> /tmp/$Component && mv /home/$Fuser/$Component/systemd.service /etc/systemd/system/$Component.service
+Status $?
+
+echo -n "Restarting the service : "
+systemctl daemon-reload   >> /tmp/$Component
+systemctl start catalogue  >>  /tmp/$Component
+systemctl enable catalogue  >> /tmp/$Component
+Status $? 
