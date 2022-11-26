@@ -15,5 +15,5 @@ Status $?
 Sysctl mysqld $? 
 
 echo -n "Extracting root password"
-DEFAULT_ROOT_PASSWORD=${grep temp /var/log/mysqld.log | head -n 1 | awk -F " " '{print $NF}'} &>> $Logfile
+DEFAULT_ROOT_PASSWORD=$(grep temp /var/log/mysqld.log | head -n 1 | awk -F " " '{print $NF}') &>> $Logfile
 Status $?
