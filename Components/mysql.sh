@@ -36,3 +36,14 @@ echo "uninstall plugin validate_password" | mysql -uroot -p$Password &>>$Logfile
 Status $?
 fi
 Status $?
+
+echo -n "Download the schema : "
+curl -s -L -o /tmp/mysql.zip "https://github.com/stans-robot-project/mysql/archive/main.zip" &>> $Logfile
+Status $?
+
+echo -n "Loading the schema : "
+cd /tmp
+unzip -o mysql.zip &>> $Logfile
+cd mysql-main                           
+mysql -u root -pRoboShop@1 <shipping.sql    >> $Logfile
+Status $?
