@@ -25,7 +25,7 @@ rabbitmqctl add_user roboshop roboshop123 &>> $Logfile
 Status $?
 
 echo -n "Configuring $Component application user permission : "
-rabbitmqctl set_user_tags roboshop administrator >> $Logifle && rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" >> $Logfile
+rabbitmqctl set_user_tags roboshop administrator >> $Logfile && rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" >> $Logfile
 Status $?
 
 

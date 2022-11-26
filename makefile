@@ -25,3 +25,6 @@ shipping:
 rabbitmq:
 	bash Components/rabbitmq.sh
 
+payments:
+	bash Components/payments.sh
+
