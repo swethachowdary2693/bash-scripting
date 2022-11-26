@@ -41,10 +41,10 @@ Status $?
 echo -e "Creation of Frontend : \e[32m Success \e[0m"
 
 echo -n "Updating proxy file with catalogue: "
-for comp in catalogue ; do 
-    sed -i -e "/$comp/s/localhost/172.31.17.159/" /etc/nginx/default.d/roboshop.conf  >> /tmp/frontend
+#for comp in catalogue user; do 
+    sed -i -e '/catalogue/s/localhost/172.31.17.159/' -e '/user/s/localhost/172.31.80.123/' /etc/nginx/default.d/roboshop.conf  >> /tmp/frontend
     Status $?
-done
+#done
 
 echo -n "Restarting the Nginx"
 systemctl restart $Component
