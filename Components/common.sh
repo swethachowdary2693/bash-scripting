@@ -52,7 +52,7 @@ DownloadExtract() {
 
 Settingsystemd() {
     echo -n "Setting up systemd service : "
-    sed -i -e 's/MONGO_DNSNAME/172.31.24.78/' -e 's/REDIS_ENDPOINT/172.31.92.253/' /home/$Fuser/$Component/systemd.service >> $Logfile && mv /home/$Fuser/$Component/systemd.service /etc/systemd/system/$Component.service >> $Logfile
+    sed -i -e 's/MONGO_DNSNAME/172.31.24.78/' -e 's/REDIS_ENDPOINT/172.31.92.253/' -e 's/MONGO_ENDPOINT/172.31.24.78/' /home/$Fuser/$Component/systemd.service >> $Logfile && mv /home/$Fuser/$Component/systemd.service /etc/systemd/system/$Component.service >> $Logfile
     Status $?
 }
 
