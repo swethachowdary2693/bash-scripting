@@ -4,7 +4,7 @@ set -e
 
 source Components/common.sh
 
-Component=payments
+Component=payment
 
 echo -n "Install Python 3 : "
 yum install python36 gcc python3-devel -y &>> $Logfile
