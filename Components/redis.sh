@@ -8,7 +8,7 @@ Component=redis
 
 
 echo -n "Get the repository of redis : "
-curl -L https://raw.githubusercontent.com/stans-robot-project/redis/main/$Component.repo >> /tmp/$Component -o /etc/yum.repos.d/$Component.repo >>/tmp/$Component
+curl -sL https://raw.githubusercontent.com/stans-robot-project/redis/main/$Component.repo >> /tmp/$Component -o /etc/yum.repos.d/$Component.repo >>/tmp/$Component
 Status $?
 
 echo -n "Installing redis : "
@@ -20,5 +20,5 @@ sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/redis.conf >> /tmp/$Component
 Status $?
 
 echo -n "Starting $Component : "
-Sysctl $Component $? $Component
+Sysctl $Component $? $Component  >> /tmp/$Component
 Status $?
