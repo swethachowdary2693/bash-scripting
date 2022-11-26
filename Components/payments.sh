@@ -23,7 +23,7 @@ User_ID=$(id -u roboshop)
 Group_ID=$(id -g roboshop)
 
 echo -n "Updating the ID's in $Component.ini file"
-sed -i -e "/^uid/ c uid=$User_ID" -e "/^gid/ c gid=$Group_ID" $Component.ini 
+sed -i -e "/^uid/ c uid=${User_ID}" -e "/^gid/ c gid=${Group_ID}" $Component.ini 
 Status $?
 
 Settingsystemd
