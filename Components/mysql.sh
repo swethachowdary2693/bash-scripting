@@ -28,6 +28,11 @@ Status $?
 fi 
 Status $?
 
+echo -n "Uninstalling Plugins : "
+echo show plugins | mysql -uroot -p$Password &>>Logfile
+if [ $? -eq 0 ]; then 
 echo -n "Uninstall the plugin : "
 echo "uninstall plugin validate_password" | mysql -uroot -p$Password &>>$Logfile
+Status $?
+fi
 Status $?
