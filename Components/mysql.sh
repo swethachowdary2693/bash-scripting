@@ -19,7 +19,7 @@ echo -n "Extracting root password : "
 DEFAULT_ROOT_PASSWORD=$(grep temp /var/log/mysqld.log | head -n 1 | awk -F " " '{print $NF}') &>> $Logfile
 Status $?
 
-echo-n "Changing the password : "
+echo -n "Changing the password : "
 echo show databases | mysql -uroot -p$Password &>>Logfile
 if [ $? -ne 0 ]; then
 echo -n "Reset root password : "
