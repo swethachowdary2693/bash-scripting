@@ -85,4 +85,20 @@ StartingService
 
 }
 
+Maven(){
+    echo -n "Installing Maven : "
+    yum install $Component -y >> $Logfile
+    Status $?
+
+    Useradd
+
+    DownloadExtract
+
+    echo -n "Generating the artifact : "
+    cd /home/$Fuser/$Component
+    mvn clean package  &>> $Logfile
+    mv target/$Component-1.0.jar $Component.jar &>> $Logfile
+    Status $?
+}
+
 

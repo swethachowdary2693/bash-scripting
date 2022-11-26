@@ -6,19 +6,7 @@ source Components/common.sh
 
 Component=shipping
 
-echo -n "Installing Maven : "
-yum install maven -y >> $Logfile
-Status $?
-
-Useradd
-
-DownloadExtract
-
-echo -n "Generating the artifact : "
-cd /home/$Fuser/$Component
-mvn clean package  &>> $Logfile
-mv target/shipping-1.0.jar shipping.jar &>> $Logfile
-Status $?
+Maven
 
 Settingsystemd
 
