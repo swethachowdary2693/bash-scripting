@@ -46,13 +46,16 @@ DownloadExtract() {
     chown -R $Fuser:$Fuser $Component/  >> $Logfile
     Status $?
 
+}
+
+npminstall() {
     cd /home/$Fuser/$Component
     npm install >> $Logfile
 }
 
 Settingsystemd() {
     echo -n "Setting up systemd service : "
-    sed -i -e 's/MONGO_DNSNAME/172.31.24.78/' -e 's/REDIS_ENDPOINT/172.31.92.253/' -e 's/MONGO_ENDPOINT/172.31.24.78/' -e 's/CATALOGUE_ENDPOINT/172.31.17.159/' /home/$Fuser/$Component/systemd.service >> $Logfile && mv /home/$Fuser/$Component/systemd.service /etc/systemd/system/$Component.service >> $Logfile
+    sed -i -e 's/MONGO_DNSNAME/172.31.24.78/' -e 's/REDIS_ENDPOINT/172.31.92.253/' -e 's/MONGO_ENDPOINT/172.31.24.78/' -e 's/CATALOGUE_ENDPOINT/172.31.17.159/' -e 's/CARTENDPOINT/172.31.20.102/' -e 's/DBHOST/172.31.16.15/' /home/$Fuser/$Component/systemd.service >> $Logfile && mv /home/$Fuser/$Component/systemd.service /etc/systemd/system/$Component.service >> $Logfile
     Status $?
 }
 
@@ -73,6 +76,8 @@ NodeJs() {
 Useradd
 
 DownloadExtract
+
+npminstall
 
 Settingsystemd
 
