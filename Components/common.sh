@@ -36,8 +36,8 @@ Useradd() {
 
 DownloadExtract() {
     echo -n "Download the $Component :"
-    curl -s -L -o /tmp/$Component.zip "https://github.com/stans-robot-project/$Component/archive/main.zip" >> $Logfile
     rm -rf /home/$Fuser/$Component >> $Logfile
+    curl -s -L -o /tmp/$Component.zip "https://github.com/stans-robot-project/$Component/archive/main.zip" >> $Logfile
     cd /home/$Fuser 
     unzip -o /tmp/$Component.zip >> $Logfile && mv $Component-main $Component
     Status $?
