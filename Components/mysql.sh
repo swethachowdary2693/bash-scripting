@@ -45,5 +45,5 @@ echo -n "Loading the schema : "
 cd /tmp
 unzip -o mysql.zip &>> $Logfile
 cd mysql-main                           
-mysql -u root -pRoboShop@1 <shipping.sql    >> $Logfile
+mysql -u root -p$Password <shipping.sql    &>> $Logfile
 Status $?
