@@ -6,3 +6,7 @@ mongodb:
 
 catalogue:
 	bash Components/catalogue.sh
+
+redis:
+	bash Components/redis.sh
+
