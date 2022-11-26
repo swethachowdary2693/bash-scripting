@@ -16,11 +16,11 @@ Status() {
 Sysctl() {
 
 echo -n "Enable $1 : "
-systemctl enable $1  >> /tmp/$3
+systemctl enable $1  >> $Logfile
 Status $2
 
 echo -n "Start $1 : "
-systemctl start $1 >> /tmp/$3
+systemctl start $1 >> $Logfile
 Status $2
 
 }
@@ -79,3 +79,5 @@ Settingsystemd
 StartingService
 
 }
+
+
