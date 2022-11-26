@@ -26,7 +26,7 @@ Status $2
 }
 
 Fuser=roboshop
-Logfile=/tmp/robo.log
+Logfile=/tmp/robot.log
 
 Useradd() {
     echo -n "Create Application user :"
