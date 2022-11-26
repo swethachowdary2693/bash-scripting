@@ -7,20 +7,20 @@ source Components/common.sh
 Component=nginx
 
 echo -n "Intalling Nginx : "
-yum install $Component -y >> /tmp/frontend
+yum install $Component -y >> $Logfile
 Status $?
 
 Sysctl $Component $? frontend
 
 echo -n "Download the content : "
-curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip" 
+curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/$Component/archive/main.zip"   
 Status $?
 
 cd /usr/share/$Component/html
 rm -rf *
 
 echo -n "Unzip the folder : "
-unzip -o /tmp/frontend.zip  >> /tmp/frontend
+unzip -o /tmp/frontend.zip  >> $Logfile
 Status $?
 
 mv frontend-main/* .
@@ -37,8 +37,6 @@ Status $?
 echo -n "Restarting the Nginx"
 systemctl restart $Component
 Status $?
-
-echo -e "Creation of Frontend : \e[32m Success \e[0m"
 
 echo -n "Updating proxy file with catalogue: "
 #for comp in catalogue user; do 

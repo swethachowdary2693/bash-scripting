@@ -6,5 +6,5 @@ source Components/common.sh
 
 Component=cart
 
-#Installing Node JS and setting up user 
+#Installing Node JS and setting up $Component
 NodeJs

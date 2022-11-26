@@ -6,7 +6,7 @@ Component=mysql
 Password=RoboShop@1
 
 echo -n "Setting up mysql Repo : "
-curl -s -L -o /etc/yum.repos.d/mysql.repo https://raw.githubusercontent.com/stans-robot-project/mysql/main/mysql.repo &>> $Logfile
+curl -s -L -o /etc/yum.repos.d/$Component.repo https://raw.githubusercontent.com/stans-robot-project/$Component/main/$Component.repo &>> $Logfile
 Status $?
 
 echo -n "Install mysql : "
@@ -20,7 +20,7 @@ DEFAULT_ROOT_PASSWORD=$(grep temp /var/log/mysqld.log | head -n 1 | awk -F " " '
 Status $?
 
 echo -n "Changing the password : "
-echo show databases | mysql -uroot -p$Password &>>Logfile
+echo show databases | mysql -uroot -p$Password &>> $Logfile
 if [ $? -ne 0 ]; then
 echo -n "Reset root password : "
 echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '$Password'" | mysql --connect-expired-password -uroot -p"$DEFAULT_ROOT_PASSWORD"  &>>$Logfile
@@ -29,7 +29,7 @@ fi
 Status $?
 
 echo -n "Uninstalling Plugins : "
-echo show plugins | mysql -uroot -p$Password &>>Logfile | grep validate_password
+echo show plugins | mysql -uroot -p$Password &>> $Logfile | grep validate_password
 if [ $? -eq 0 ]; then 
 echo -n "Uninstall the plugin : "
 echo "uninstall plugin validate_password" | mysql -uroot -p$Password &>>$Logfile

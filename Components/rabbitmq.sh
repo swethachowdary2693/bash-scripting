@@ -15,20 +15,20 @@ curl -s https://packagecloud.io/install/repositories/$Component/$Component-serve
 Status $?
 
 echo -n "Installing $Component :"
-yum install rabbitmq-server -y &>> $Logfile
+yum install $Component-server -y &>> $Logfile
 Status $?
 
-Sysctl rabbitmq-server $?
+Sysctl $Component-server $?
 
-rabbitmqctl list_users | grep roboshop  >> $Logfile
+rabbitmqctl list_users | grep $Fuser  >> $Logfile
 if [ $? -ne 0 ]; then
 echo -n "Creating $Component application user :"
-rabbitmqctl add_user roboshop roboshop123 &>> $Logfile
+rabbitmqctl add_user $Fuser roboshop123 &>> $Logfile
 Status $?
 fi
 
 echo -n "Configuring $Component application user permission : "
-rabbitmqctl set_user_tags roboshop administrator >> $Logfile && rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" >> $Logfile
+rabbitmqctl set_user_tags $Fuser administrator >> $Logfile && rabbitmqctl set_permissions -p / $Fuser ".*" ".*" ".*" >> $Logfile
 Status $?
 
 
