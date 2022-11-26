@@ -20,9 +20,12 @@ Status $?
 
 Sysctl rabbitmq-server $?
 
+rabbitmqctl list_users | grep roboshop  >> $Logfile
+if [ $? -ne 0 ]; then
 echo -n "Creating $Component application user :"
 rabbitmqctl add_user roboshop roboshop123 &>> $Logfile
 Status $?
+fi
 
 echo -n "Configuring $Component application user permission : "
 rabbitmqctl set_user_tags roboshop administrator >> $Logfile && rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" >> $Logfile
