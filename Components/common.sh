@@ -34,7 +34,7 @@ Useradd() {
     Status $?
 }
 
-Download&Extract() {
+DownloadExtract() {
     echo -n "Download the catalogue :"
     curl -s -L -o /tmp/$Component.zip "https://github.com/stans-robot-project/$Component/archive/main.zip" >> $Logfile
     rm -rf /home/$Fuser/$Component >> $Logfile
@@ -72,7 +72,7 @@ NodeJs() {
 
 Useradd
 
-Download&Extract
+DownloadExtract
 
 Settingsystemd
 
