@@ -2,7 +2,7 @@
 
 set -e 
 
-sources Components/common.sh
+source Components/common.sh
 
 Component=redis
 
