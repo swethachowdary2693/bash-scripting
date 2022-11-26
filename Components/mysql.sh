@@ -26,6 +26,7 @@ echo -n "Reset root password : "
 echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '$Password'" | mysql --connect-expired-password -uroot -p"$DEFAULT_ROOT_PASSWORD"  &>>$Logfile
 Status $?
 fi 
+Status $?
 
 echo -n "Uninstall the plugin : "
 echo "uninstall plugin validate_password" | mysql -uroot -p$Password &>>$Logfile
