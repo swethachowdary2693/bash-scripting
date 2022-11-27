@@ -1,6 +1,13 @@
 #!/bin/bash
 
 Component=$1 
+
+#if $1 input is not given then it throw an error
+if [ -z  $1 ]; then
+    echo -n "\e[32m Input machi name \e[0m"
+    exit 1
+fi    
+
 AMI_ID=$(aws ec2 describe-images --filters "Name=name,Values=DevOps-LabImage-CentOS7" | jq '.Images[].ImageId' | sed -e 's/"//g')
 Security_grp="sg-0ab962e577f534c99"
 
