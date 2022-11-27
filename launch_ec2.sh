@@ -4,7 +4,7 @@ Component=$1
 
 #if $1 input is not given then it throw an error
 if [ -z  $1 ]; then
-    echo -e '\e[32m Input machi name \e[0m'
+    echo -e '\e[32m Input machine name \e[0m'
     exit 1
 fi    
 
