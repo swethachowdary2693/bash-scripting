@@ -21,4 +21,4 @@ echo "Private IP address for created Machine $IPAddress"
 
 echo "Creating Route53 record : "
 sed -i -e "s/Private_IP/$IPAddress/" -e "s/Component/$Component/" r53.json >> /tmp/r53.json
-aws route53 change-resource-record-sets --hosted-zone-id Z045368932D85CAY0T44S --change-batch file://r53.json | jq
+aws route53 change-resource-record-sets --hosted-zone-id Z045368932D85CAY0T44S --change-batch file://tmp/r53.json | jq
