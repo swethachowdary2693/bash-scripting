@@ -2,10 +2,10 @@
     "Comment": "UPSERT a record ",
     "Changes": [{
     "Action": "UPSERT",
-                "ResourceRecordSet": {
-                            "Name": "Component.roboshop.internal",
-                            "Type": "A",
-                            "TTL": 300,
-                         "ResourceRecords": [{ "Value": "Private_IP"}]
+        "ResourceRecordSet": {
+            "Name": "Component.roboshop.internal",
+            "Type": "A",
+            "TTL": 300,
+            "ResourceRecords": [{ "Value": "Private_IP"}]
 }}]
 }
