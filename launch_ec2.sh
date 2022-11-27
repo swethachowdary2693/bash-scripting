@@ -14,4 +14,8 @@ Security_grp="sg-0ab962e577f534c99"
 echo "The AMI ID is $AMI_ID"
 
 echo -n "Launch EC2 instances : "
-aws ec2 run-instances --image-id $AMI_ID --instance-type t2.micro --security-group-ids $Security_grp --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$Component}]" | jq 
+IPAddress = $(aws ec2 run-instances --image-id $AMI_ID --instance-type t2.micro --security-group-ids $Security_grp --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$Component}]" | jq '.Instances[].PrivateIpAddress') 
+
+echo "Creating Route53 record : "
+sed -i -e "s/Private_IP/$IPAddress/" -e "s/Component/$Component" r53.json >> /tmp/r53.json
+aws route53 change-resource-record-sets --hosted-zone-id Z045368932D85CAY0T44S --change-batch file://r53.json | jq
