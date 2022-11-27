@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e 
+
 Component=$1 
 
 #if $1 input is not given then it throw an error
