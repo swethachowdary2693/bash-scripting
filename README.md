@@ -36,11 +36,11 @@ Components for roboshop project are below,
 In this we have implemented all the components under respective machine by just giving "sudo make Component"
     Note: Component will be the respective Component name
 
-# In the above approach we are manually creating the machines and making the components. 
+### In the above approach we are manually creating the machines and making the components. 
 
 So we have automatted the creation of workstations and respective Route 53 record for each component. 
 
-# In this above approach also we are manually giving each and every component name. 
+### In this above approach also we are manually giving each and every component name. 
 
 Going forward we have automatted the creation of all workstations and respective Route 53 records for each component in a single go
    Example: bash launch_ec2.sh all 
