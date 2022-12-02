@@ -40,7 +40,7 @@ Status $?
 
 echo -n "Updating proxy file with catalogue: "
 #for comp in catalogue user; do 
-    sed -i -e '/catalogue/s/localhost/172.31.17.159/' -e '/user/s/localhost/172.31.80.123/' -e '/cart/s/localhost/172.31.20.102/' -e '/shipping/s/localhost/172.31.88.181/' -e '/payment/s/localhost/172.31.87.6/' /etc/nginx/default.d/roboshop.conf  >> /tmp/frontend
+    sed -i -e '/catalogue/s/localhost/catalogue.roboshop.internal/' -e '/user/s/localhost/user.roboshop.internal/' -e '/cart/s/localhost/cart.roboshop.internal/' -e '/shipping/s/localhost/shipping.roboshop.internal/' -e '/payment/s/localhost/payment.roboshop.internal' /etc/nginx/default.d/roboshop.conf  >> /tmp/frontend
     Status $?
 #done
 
