@@ -3,6 +3,7 @@
 set -e 
 
 Component=$1
+Env=$2
 ZoneId="Z045368932D85CAY0T44S" 
 
 #if $1 input is not given then it throw an error
@@ -18,18 +19,18 @@ echo "The AMI ID is $AMI_ID"
 
 create_server() {
 echo -n "Launch EC2 instances : "
-IPAddress=$(aws ec2 run-instances --image-id $AMI_ID --instance-type t2.micro --security-group-ids $Security_grp --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$Component}]" | jq '.Instances[].PrivateIpAddress' | sed -e 's/"//g')
+IPAddress=$(aws ec2 run-instances --image-id $AMI_ID --instance-type t2.micro --security-group-ids $Security_grp --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$Component-$Env}]" | jq '.Instances[].PrivateIpAddress' | sed -e 's/"//g')
 echo "Private IP address for created Machine $IPAddress" 
 
 echo "Creating Route53 record : "
-sed -e "s/Private_IP/$IPAddress/" -e "s/Component/$Component/" r53.json > /tmp/route53.json
+sed -e "s/Private_IP/$IPAddress/" -e "s/Component/$Component-$Env/" r53.json > /tmp/route53.json
 aws route53 change-resource-record-sets --hosted-zone-id $ZoneId --change-batch file:///tmp/route53.json | jq
 
 } 
 
 if [ $1 = "All" ]; then
     for Component in frontend catalogue cart shipping user mongodb mysql rabbitmq redis payment; do 
-        Component=$Component
+        Component=$Component 
         create_server
     done
 else
